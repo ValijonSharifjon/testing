@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 30
+      arrivalRate: 200  # 10 users per second
+
+scenarios:
+  - name: Ping and Echo Test
+    flow:
+      - get:
+          url: "/ping"
+      - get:
+          url: "/leak"    
+      - post:
+          url: "/echo"
+          json:
+            message: "Hello from Artillery"
